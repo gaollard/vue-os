@@ -1,6 +1,6 @@
 <template>
   <ul class="cmt-list">
-    <li class="cmt-item" v-for="item in components" @click="add">{{ item.desc }}</li>
+    <li class="cmt-item" draggable="true" v-for="item in components" @click="add">{{ item.desc }}</li>
   </ul>
 </template>
 
