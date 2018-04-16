@@ -29,7 +29,7 @@
   }
 </script>
 
-<style>
+<style scoped="">
   .cmt-item {
     float: left;
     height: 30px;
@@ -42,5 +42,8 @@
     border-radius: 2px;
     margin-right: 10px;
     background-color: #eefbf9;
+  }
+  *[draggable=true] {
+    cursor: move;
   }
 </style>
