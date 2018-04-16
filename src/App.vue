@@ -14,6 +14,7 @@
 <script>
   import RenderView from './components/render.vue';
   import EditorView from './components/editor.vue';
+
   export default {
     name: 'App',
     components: {
@@ -28,13 +29,26 @@
             {
               component: 'Inline',
               nodes: 'inline'
+            },
+            {
+              component: 'Inline',
+              nodes: [
+                {
+                  component: 'Inline',
+                  nodes: 'inline'
+                },
+                {
+                  component: 'Inline',
+                  nodes: 'inline'
+                }
+              ]
             }
           ]
         }
       }
     },
     methods: {
-      handleChange () {
+      handleChange() {
         this.config.nodes.push({
           component: 'Inline',
           nodes: 'inline'

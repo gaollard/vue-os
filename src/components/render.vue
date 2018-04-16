@@ -13,3 +13,9 @@
     }
   }
 </script>
+<style scoped>
+  .component {
+    margin: 2px;
+    border: 1px solid rebeccapurple;
+  }
+</style>

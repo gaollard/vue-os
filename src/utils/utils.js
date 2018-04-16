@@ -18,5 +18,7 @@ export function createNode(node, c) {
 }
 
 export function createNodes(config, c) {
+  let node = createNode(config, c);
+  console.log(node);
   return createNode(config, c);
 }

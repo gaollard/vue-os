@@ -1,10 +1,12 @@
 <template>
   <ul class="cmt-list">
-    <li class="cmt-item" draggable="true" v-for="item in components" @click="add">{{ item.desc }}</li>
-    <div class="cmt-item" v-drop>
-      <div>等等等等等等</div>
-      <div>等等等等等等</div>
-    </div>
+    <li class="cmt-item" draggable="true" :data-component="item.name" v-for="item in components"
+        @click="add(item.name)">
+      {{ item.desc }}
+    </li>
+    <li class="cmt-item">
+      <div>哈哈</div>
+    </li>
   </ul>
 </template>
 
@@ -26,7 +28,8 @@
     },
     props: ['handleChange'],
     methods: {
-      add() {
+      add(c) {
+        console.log(c);
         this.handleChange();
       }
     }
@@ -47,6 +50,7 @@
     margin-right: 10px;
     background-color: #eefbf9;
   }
+
   *[draggable=true] {
     cursor: move;
   }
