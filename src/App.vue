@@ -1,23 +1,64 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <div class="container">
+      <div class="render-view">
+        <RenderView :config="config"></RenderView>
+      </div>
+      <div class="editor-view">
+        <EditorView :handleChange="handleChange"></EditorView>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'App'
-}
+  import RenderView from './components/render.vue';
+  import EditorView from './components/editor.vue';
+  export default {
+    name: 'App',
+    components: {
+      RenderView,
+      EditorView
+    },
+    data() {
+      return {
+        config: {
+          component: 'Block',
+          nodes: [
+            {
+              component: 'Inline',
+              nodes: 'inline'
+            }
+          ]
+        }
+      }
+    },
+    methods: {
+      handleChange () {
+        this.config.nodes.push({
+          component: 'Inline',
+          nodes: 'inline'
+        })
+      }
+    }
+  }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style scoped>
+  .container {
+    display: flex;
+  }
+
+  .render-view {
+    width: 30%;
+    padding: 20px;
+    min-height: 100vh;
+    border: 1px solid #ddd;
+  }
+
+  .editor-view {
+    width: 70%;
+    padding: 20px;
+    min-height: 100vh;
+  }
 </style>
