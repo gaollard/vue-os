@@ -1,6 +1,10 @@
 <template>
   <ul class="cmt-list">
     <li class="cmt-item" draggable="true" v-for="item in components" @click="add">{{ item.desc }}</li>
+    <div class="cmt-item" v-drop>
+      <div>等等等等等等</div>
+      <div>等等等等等等</div>
+    </div>
   </ul>
 </template>
 
@@ -17,7 +21,7 @@
     },
     data() {
       return {
-        components
+        components,
       }
     },
     props: ['handleChange'],

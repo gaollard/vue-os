@@ -3,6 +3,8 @@ import App from './App.vue';
 import './assets/common.css';
 import router from './router/index';
 
+import './directives/onDrop';
+
 import Block from './components/Block.vue';
 import Inline from './components/Inline.vue';
 
