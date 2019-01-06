@@ -21,7 +21,6 @@ function createNode(node) {
   if (node.nodes.constructor === String) {
     return render(node.component, node.nodes);
   } else {
-    console.log(render(node.component));
     return createNode(node.nodes);
   }
 }

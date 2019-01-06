@@ -5,7 +5,7 @@
         <RenderView :config="config"></RenderView>
       </div>
       <div class="editor-view">
-        <EditorView :handleChange="handleChange"></EditorView>
+        <EditorView :handleChange="handleChange" @add="handleAdd"></EditorView>
       </div>
     </div>
   </div>
@@ -27,22 +27,21 @@
           component: 'Block',
           nodes: [
             {
-              component: 'Inline',
-              nodes: 'inline'
+              component: 'TextView',
+              nodes: '我是文本'
             },
             {
-              component: 'Inline',
+              component: 'Navigator',
+              attrs: {
+                url: 'https://www.baidu.com'
+              },
+              nodes: '去估价'
+            },
+            {
+              component: 'Block',
               nodes: [
-                {
-                  component: 'Inline',
-                  nodes: 'inline'
-                },
-                {
-                  component: 'Inline',
-                  nodes: 'inline'
-                }
               ]
-            }
+            }    
           ]
         }
       }
@@ -53,26 +52,37 @@
           component: 'Inline',
           nodes: 'inline'
         })
+      },
+      handleAdd ({ name, attrs, styles }) {
+        this.config.nodes.push({
+          component: name,
+          attrs: {
+            ...attrs
+          },
+          style: {
+            ...styles
+          }
+        })
       }
     }
   }
 </script>
 
 <style scoped>
-  .container {
-    display: flex;
-  }
+.container {
+  display: flex;
+}
 
-  .render-view {
-    width: 30%;
-    padding: 20px;
-    min-height: 100vh;
-    border: 1px solid #ddd;
-  }
+.render-view {
+  width: 375px;
+  height: 667px;
+  margin: 20px;
+  border: 1px solid #ddd;
+}
 
-  .editor-view {
-    width: 70%;
-    padding: 20px;
-    min-height: 100vh;
-  }
+.editor-view {
+  flex: 1;
+  padding: 20px;
+  min-height: 100vh;
+}
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="component inline">
+  <div data-module="line">
     <slot></slot>
   </div>
 </template>

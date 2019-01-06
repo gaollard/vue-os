@@ -1,12 +1,11 @@
 <template>
-  <div class="component block">
+  <div data-module="block">
     <slot></slot>
   </div>
 </template>
 
 <script>
   export default {
-    'name': 'block',
-    'desc': '块级标签'
+    'name': 'Block'
   }
 </script>
