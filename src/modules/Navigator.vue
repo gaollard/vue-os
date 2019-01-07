@@ -1,6 +1,6 @@
 <template>
-  <a class="navigator" data-module="navigator" :href="url">
-    <slot></slot>
+  <a data-module="navigator" :href="url">
+    <slot>{{ text }}</slot>
   </a>
 </template>
 
@@ -8,7 +8,8 @@
 export default {
   name: 'navigator',
   props: {
-    url: String
+    url: String,
+    text: String
   }
 }
 </script>

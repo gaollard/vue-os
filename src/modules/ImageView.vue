@@ -10,7 +10,8 @@ export default {
   },
   methods: {
     onClick () {
-      console.log(this)
+      const nodeId = this.$attrs['data-node-id']
+      this.$store.dispatch('editNode', nodeId)
     }
   }
 }

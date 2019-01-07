@@ -1,11 +1,14 @@
 <template>
   <span data-module="TextView">
-    <slot></slot>
+    <slot>{{ text }}</slot>
   </span>
 </template>
 
 <script>
 export default {
-  name: 'TextView'
+  name: 'TextView',
+  props: {
+    text: String
+  }
 }
 </script>

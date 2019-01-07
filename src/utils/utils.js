@@ -3,8 +3,16 @@ export function createNode(node, c) {
     return c(
       node.component,
       {
-        props: node.attrs || {},
-        style: node.style || {}
+        props: node.props || {},
+        style: node.style || {},
+        attrs: {
+          'data-node-id': node.nodeId
+        },
+        on: {
+          edit () {
+            console.log(node)
+          }
+        }
       }
     );
   }
@@ -13,8 +21,11 @@ export function createNode(node, c) {
       return c(
         node.component,
         {
-          props: node.attrs || {},
-          style: node.style || {}
+          props: node.props || {},
+          style: node.style || {},
+          attrs: {
+            'data-node-id': node.nodeId
+          }
         },
         node.nodes
       );
@@ -23,8 +34,11 @@ export function createNode(node, c) {
       return c(
         node.component,
         {
-          props: node.attrs || {},
-          style: node.style || {}
+          props: node.props || {},
+          style: node.style || {},
+          attrs: {
+            'data-node-id': node.nodeId
+          }
         }
       );
       break;
@@ -32,8 +46,11 @@ export function createNode(node, c) {
       return c(
         node.component,
         {
-          props: node.attrs || {},
-          style: node.style || {}
+          props: node.props || {},
+          style: node.style || {},
+          attrs: {
+            'data-node-id': node.nodeId
+          }
         }, 
         [
           createNode(node.nodes, c)
@@ -48,8 +65,11 @@ export function createNode(node, c) {
       return c(
         node.component,
         {
-          props: node.attrs || {},
-          style: node.style || {}
+          props: node.props || {},
+          style: node.style || {},
+          attrs: {
+            'data-node-id': node.nodeId
+          }
         },
         children
       );
