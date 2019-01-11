@@ -11,7 +11,7 @@ export default {
   methods: {
     onClick () {
       const nodeId = this.$attrs['data-node-id']
-      this.$store.dispatch('editNode', nodeId)
+      this.$store.dispatch('edit/setNodeId', nodeId)
     }
   }
 }

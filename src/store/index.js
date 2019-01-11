@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import editStore from './mdoule/edit'
 
 Vue.use(Vuex)
 
@@ -10,6 +11,15 @@ const findNode = (nodeId, node, callback) => {
     for (let index = 0; index < node.nodes.length; index++) {
       findNode(nodeId, node.nodes[index], callback)
     }
+  }
+}
+
+const createUnique = (node, parentId = 0) => {
+  node.nodeId = `${parentId}`
+  if (node.nodes) {
+    node.nodes.forEach((node, index) => {
+      createUnique(node, `${parentId}_${index}`)
+    })
   }
 }
 
@@ -55,9 +65,6 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    increment (state) {
-      state.count++
-    },
     usePrams (state, { props, styles }) {
       state.editData.props = { ...props }
       state.editData.styles = { ...styles }
@@ -69,13 +76,19 @@ export default new Vuex.Store({
       state.editNode = node
     },
     updateNodeTree (state, nodeTree) {
+      createUnique(nodeTree)
       state.nodeTree = nodeTree
+    },
+    updateNode (state, { nodeId, options }) {
+      console.log(options)
+      findNode(nodeId, state.nodeTree, (node) => {
+        node = options
+      })
+      createUnique(state.nodeTree)
+      state.nodeTree = state.nodeTree
     }
   },
   actions: {
-    update ({ commit }, data) {
-      console.log(data)
-    },
     addModule ({ commit, state }, { name, props, styles }) {
       state.nodeTree.nodes.push({
         component: name,
@@ -94,6 +107,7 @@ export default new Vuex.Store({
     },
     editNode ({ state, dispatch, commit }, nodeId) {
       findNode(nodeId, state.nodeTree, (node) => {
+        console.log(node)
         commit('setCurEditNode', node);
         dispatch('usePrams', {
           ...node
@@ -111,5 +125,8 @@ export default new Vuex.Store({
         }
       })
     }
+  },
+  modules: {
+    edit: editStore
   }
 })

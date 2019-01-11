@@ -1,5 +1,5 @@
 <template>
-  <a data-module="navigator" :href="url">
+  <a data-module="navigator" :href="url" @click="onClick">
     <slot>{{ text }}</slot>
   </a>
 </template>
@@ -10,6 +10,12 @@ export default {
   props: {
     url: String,
     text: String
+  },
+  methods: {
+    onClick () {
+      const nodeId = this.$attrs['data-node-id']
+      this.$store.dispatch('edit/setNodeId', nodeId)
+    }
   }
 }
 </script>

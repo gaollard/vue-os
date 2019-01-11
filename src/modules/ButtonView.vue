@@ -7,6 +7,12 @@ export default {
   name: 'ButtonView',
   props: {
     text: String
+  },
+  methods: {
+    onClick () {
+      const nodeId = this.$attrs['data-node-id']
+      this.$store.dispatch('edit/setNodeId', nodeId)
+    }
   }
 }
 </script>

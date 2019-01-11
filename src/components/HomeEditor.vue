@@ -9,6 +9,11 @@
       :propsData="propsForm"
       @add-module="addModule"
     ></HomeUpdateProp>
+
+    <HomeEditProp
+      v-if="$store.state.edit.nodeId"
+      :options="$store.state.edit.options"/>
+
   </div>
 </template>
 
@@ -21,6 +26,7 @@ import Navigator from '../modules/Navigator.vue';
 
 import HomeMateriel from './HomeMateriel.vue';
 import HomeUpdateProp from './HomeUpdateProp.vue';
+import HomeEditProp from './HomeEditProp.vue';
 
 const modules = {
   Block,
@@ -33,7 +39,8 @@ const modules = {
 export default {
   components: {
     HomeMateriel,
-    HomeUpdateProp
+    HomeUpdateProp,
+    HomeEditProp
   },
   data() {
     return {

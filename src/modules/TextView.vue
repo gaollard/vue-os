@@ -1,5 +1,5 @@
 <template>
-  <span data-module="TextView">
+  <span data-module="TextView" @click="onClick">
     <slot>{{ text }}</slot>
   </span>
 </template>
@@ -9,6 +9,12 @@ export default {
   name: 'TextView',
   props: {
     text: String
+  },
+  methods: {
+    onClick () {
+      const nodeId = this.$attrs['data-node-id']
+      this.$store.dispatch('edit/setNodeId', nodeId)
+    }
   }
 }
 </script>
